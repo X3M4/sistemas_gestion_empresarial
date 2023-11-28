@@ -6,4 +6,8 @@ def calculoCm(pies:int, pulgadas:int):
     print("CONVERTIDOR DE MEDIDAS AL SISTEMA INTENACIONAL DESDE EL SISTEMA IMPERIAL\n")
     print(f"{pies} pies y {pulgadas} pulgadas son {cm} cm")
 
-calculoCm(pies = int(input("Escriba una cantidad de pies\n")), pulgadas=int(input("Escribas una cantidad de pulgadas\n")))
+try:
+    calculoCm(pies = int(input("Escriba una cantidad de pies\n")), pulgadas=int(input("Escribas una cantidad de pulgadas\n")))
+except:
+    print("Uno de los valores escritos no es un número entero")
+    calculoCm(pies = int(input("Escriba una cantidad de pies\n")), pulgadas=int(input("Escribas una cantidad de pulgadas\n")))

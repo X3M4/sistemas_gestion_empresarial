@@ -6,4 +6,8 @@ def convertidorTiempo(seg:int):
     segundos = seg - minutos*60
     print(f"{seg} segundos son {minutos} minutos y {segundos} segundos")
 
-convertidorTiempo(int(input("Escriba una cantidad de segundos: ")))
+try:
+    convertidorTiempo(int(input("Escriba una cantidad de segundos: ")))
+except:
+    print("El valor escrito no es un número entero")
+    convertidorTiempo(int(input("Escriba una cantidad de segundos: ")))

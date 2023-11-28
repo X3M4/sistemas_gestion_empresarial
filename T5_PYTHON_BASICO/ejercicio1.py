@@ -5,4 +5,8 @@ def ejercicio1Media(a:float, b:float):
     print(f"La media de {a:.1f} y {b:.1f} es {c}")
 
 
-ejercicio1Media(a=float(input("Escribe el primer número\n")), b=float(input("Escribe el segundo número\n")))
+try:
+    ejercicio1Media(a=float(input("Escribe el primer número\n")), b=float(input("Escribe el segundo número\n")))
+except:
+    print("Algún valor escrito no es un número entero válido")
+    ejercicio1Media(a=float(input("Escribe el primer número\n")), b=float(input("Escribe el segundo número\n")))
