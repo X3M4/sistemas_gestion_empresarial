@@ -34,6 +34,20 @@
             action="sports_association_chema.action_sport_team"
             parent="sports_association_chema.sport_menu"
             sequence="10"/>
+        
+        <menuitem
+            id="sport_sport_menu"
+            name="Sport"
+            action="sports_association_chema.action_sport_sport"
+            parent="sports_association_chema.sport_menu"
+            sequence="10"/>
+        
+        <menuitem
+            id="sport_player_menu"
+            name="Player"
+            action="sports_association_chema.action_sport_player"
+            parent="sports_association_chema.sport_menu"
+            sequence="10"/>
 
     </data>
 </odoo>

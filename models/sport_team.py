@@ -26,6 +26,14 @@ class SportTeam(models.Model):
         comodel_name='sport.sport',
     )
     
+    def make_all_starters(self):
+        for record in self.player_list_ids:
+            record.starting_team=True
+    
+    def make_all_substitutes(self):
+        for record in self.player_list_ids:
+            record.starting_team=False
+    
     
     
     

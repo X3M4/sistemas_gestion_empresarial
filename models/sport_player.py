@@ -15,11 +15,14 @@ class SportPlayer(models.Model):
         string='Age',
     )
     
-    
-    position = fields.Char(
+    position = fields.Selection(
         string='Position',
+        selection=[
+            ('portero', 'Portero'), 
+            ('defensa', 'Defensa'),
+            ('medio', 'Medio'),
+            ('delantero', 'Delantero')]
     )
-    
     
     team_id = fields.Many2one(
         string='Team',
@@ -29,6 +32,12 @@ class SportPlayer(models.Model):
     starting_team = fields.Boolean(
         string='Starting Team',
     )
+    
+    def action_make_starter(self):
+        self.starting_team = True
+    
+    def action_make_substitute(self):
+        self.starting_team = False
     
     
     
