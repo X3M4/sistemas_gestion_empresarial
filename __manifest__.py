@@ -19,8 +19,9 @@
     "data": [
             "security/groups.xml",
             "security/ir.model.access.csv",
-             "views/sport_issue.xml",
              "views/sport_issue_views.xml",
-             "views/sport_clinic_views.xml"
+             "views/sport_clinic_views.xml",
+             "views/sport_issue_tag_views.xml",
+             "views/sport_issue_menu.xml",
              ],
 }

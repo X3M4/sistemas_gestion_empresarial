@@ -24,6 +24,5 @@ class SportClinic(models.Model):
         inverse_name='clinic_id',
     )    
     
-    
-    
-    
+    def action_check_assistance(self):
+         self.issue_ids.write({'assistance': True})

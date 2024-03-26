@@ -61,5 +61,18 @@
             </field>
         </record>
 
+        <!-- Action view for sport.issue model-->
+        <record id="action_sport_issue" model="ir.actions.act_window">
+            <field name="name">Sport Issues</field>
+            <field name="res_model">sport.issue</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    Create a new sport issue
+                </p>
+            </field>
+        </record>
+
+
     </data>
 </odoo>

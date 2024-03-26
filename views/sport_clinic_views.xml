@@ -18,14 +18,27 @@
         <field name="name">sport_clinic.view.form</field>
         <field name="model">sport.clinic</field>
         <field name="arch" type="xml">
-            <form string="">
+            <form string="Clinic">
+                <header>
+                    <button string="Check Assistance" name="action_check_assistance" type="object" class="oe_highlight"/>
+                </header>
                 <sheet>
                     <group>
                         <field name="name" />
                         <field name="phone" />
                         <field name="email" />
-                        <field name="issue_ids"/>
                     </group>
+                    <notebook>
+                        <page name="issues" string="Issues">
+                            <field name="issue_ids">
+                                <tree editable="bottom">
+                                    <field name="name" />
+                                    <field name="date" />
+                                    <field name="assistance" />
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
                 </sheet>
             </form>
         </field>
@@ -41,20 +54,6 @@
                 Create a new sport clinic
             </p>
         </field>
+        
     </record>
-
-    <!-- Menu base-->
-    <menuitem
-        id="sport_menu"
-        name="Sport Association"
-        sequence="10">
-    </menuitem>
-
-    <menuitem
-        id="sport_clinic_menu"
-        name="Sport Clinics"
-        action="action_sport_clinic"
-        parent="sport_menu"
-        sequence="10" />
-
 </odoo>
