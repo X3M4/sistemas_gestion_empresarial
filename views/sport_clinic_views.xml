@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- sport.clinic model tree view-->
+    <record id="sport_clinic_view_tree" model="ir.ui.view">
+        <field name="name">sport_clinic.view.tree</field>
+        <field name="model">sport.clinic</field>
+        <field name="arch" type="xml">
+            <tree string="">
+                <field name="name" />
+                <field name="phone" />
+                <field name="email" />
+            </tree>
+        </field>
+    </record>
+
+    <!-- sport.clinic model form view-->
+    <record id="sport_clinic_view_form" model="ir.ui.view">
+        <field name="name">sport_clinic.view.form</field>
+        <field name="model">sport.clinic</field>
+        <field name="arch" type="xml">
+            <form string="">
+                <sheet>
+                    <group>
+                        <field name="name" />
+                        <field name="phone" />
+                        <field name="email" />
+                        <field name="issue_ids"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- sport.clinic action-->
+    <record id="action_sport_clinic" model="ir.actions.act_window">
+        <field name="name">Sport Clinic</field>
+        <field name="res_model">sport.clinic</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create a new sport clinic
+            </p>
+        </field>
+    </record>
+
+    <!-- Menu base-->
+    <menuitem
+        id="sport_menu"
+        name="Sport Association"
+        sequence="10">
+    </menuitem>
+
+    <menuitem
+        id="sport_clinic_menu"
+        name="Sport Clinics"
+        action="action_sport_clinic"
+        parent="sport_menu"
+        sequence="10" />
+
+</odoo>

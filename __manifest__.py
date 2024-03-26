@@ -15,6 +15,12 @@
     "depends": [
         "base",
     ],
-    "data": ["security/ir.model.access.csv",
-             "views/sport_issue.xml"],
+    
+    "data": [
+            "security/groups.xml",
+            "security/ir.model.access.csv",
+             "views/sport_issue.xml",
+             "views/sport_issue_views.xml",
+             "views/sport_clinic_views.xml"
+             ],
 }
