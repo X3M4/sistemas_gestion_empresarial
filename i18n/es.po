@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 17.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-03-26 08:50+0000\n"
-"PO-Revision-Date: 2024-03-26 08:50+0000\n"
+"POT-Creation-Date: 2024-03-26 15:40+0000\n"
+"PO-Revision-Date: 2024-03-26 15:40+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -32,9 +32,24 @@ msgid ""
 msgstr ""
 
 #. module: sports_association_chema
+#: model:sport.issue.tag,name:sports_association_chema.sport_issue_tag_2
+msgid "Accidente"
+msgstr ""
+
+#. module: sports_association_chema
+#: model:ir.model.fields,field_description:sports_association_chema.field_sport_player__age
+msgid "Age"
+msgstr "Edad"
+
+#. module: sports_association_chema
 #: model:ir.model.fields,field_description:sports_association_chema.field_sport_issue__assistance
 msgid "Assistance"
 msgstr "Asistencia"
+
+#. module: sports_association_chema
+#: model:sport.issue.tag,name:sports_association_chema.sport_issue_tag_4
+msgid "Calambre"
+msgstr ""
 
 #. module: sports_association_chema
 #: model_terms:ir.ui.view,arch_db:sports_association_chema.sport_clinic_view_form
@@ -42,9 +57,19 @@ msgid "Check Assistance"
 msgstr "Comprobar Asistencia"
 
 #. module: sports_association_chema
+#: model_terms:ir.ui.view,arch_db:sports_association_chema.sport_clinic_view_form
+msgid "Clinic"
+msgstr "Clínica"
+
+#. module: sports_association_chema
 #: model:ir.model.fields,field_description:sports_association_chema.field_sport_issue_tag__color
 msgid "Color"
-msgstr ""
+msgstr "Color"
+
+#. module: sports_association_chema
+#: model_terms:ir.actions.act_window,help:sports_association_chema.action_sport_sport
+msgid "Create a new sport"
+msgstr "Cear nuevo deporte"
 
 #. module: sports_association_chema
 #: model_terms:ir.actions.act_window,help:sports_association_chema.action_sport_clinic
@@ -52,15 +77,33 @@ msgid "Create a new sport clinic"
 msgstr "Crear una nueva clínica deportiva"
 
 #. module: sports_association_chema
-#: model_terms:ir.actions.act_window,help:sports_association_chema.action_sport_window
+#: model_terms:ir.actions.act_window,help:sports_association_chema.action_sport_issue
 msgid "Create a new sport issue"
-msgstr "Crear una nueva incidencia"
+msgstr "Crear nueva incidencia deportiva"
+
+#. module: sports_association_chema
+#: model_terms:ir.actions.act_window,help:sports_association_chema.action_sport_tag_issue
+msgid "Create a new sport issue tag"
+msgstr "Crear nueva etiqueta de indicencia"
+
+#. module: sports_association_chema
+#: model_terms:ir.actions.act_window,help:sports_association_chema.action_sport_player
+msgid "Create a new sport player"
+msgstr "Crear nuevo jugador"
+
+#. module: sports_association_chema
+#: model_terms:ir.actions.act_window,help:sports_association_chema.action_sport_team
+msgid "Create a new sport team"
+msgstr "Crear nuevo equipo"
 
 #. module: sports_association_chema
 #: model:ir.model.fields,field_description:sports_association_chema.field_sport_clinic__create_uid
 #: model:ir.model.fields,field_description:sports_association_chema.field_sport_issue__create_uid
 #: model:ir.model.fields,field_description:sports_association_chema.field_sport_issue_tag__create_uid
 #: model:ir.model.fields,field_description:sports_association_chema.field_sport_license__create_uid
+#: model:ir.model.fields,field_description:sports_association_chema.field_sport_player__create_uid
+#: model:ir.model.fields,field_description:sports_association_chema.field_sport_sport__create_uid
+#: model:ir.model.fields,field_description:sports_association_chema.field_sport_team__create_uid
 msgid "Created by"
 msgstr "Creado por"
 
@@ -69,6 +112,9 @@ msgstr "Creado por"
 #: model:ir.model.fields,field_description:sports_association_chema.field_sport_issue__create_date
 #: model:ir.model.fields,field_description:sports_association_chema.field_sport_issue_tag__create_date
 #: model:ir.model.fields,field_description:sports_association_chema.field_sport_license__create_date
+#: model:ir.model.fields,field_description:sports_association_chema.field_sport_player__create_date
+#: model:ir.model.fields,field_description:sports_association_chema.field_sport_sport__create_date
+#: model:ir.model.fields,field_description:sports_association_chema.field_sport_team__create_date
 msgid "Created on"
 msgstr "Creado en"
 
@@ -78,16 +124,35 @@ msgid "Date"
 msgstr "Fecha"
 
 #. module: sports_association_chema
+#: model:ir.model.fields.selection,name:sports_association_chema.selection__sport_player__position__defensa
+msgid "Defensa"
+msgstr ""
+
+#. module: sports_association_chema
+#: model:ir.model.fields.selection,name:sports_association_chema.selection__sport_player__position__delantero
+msgid "Delantero"
+msgstr ""
+
+#. module: sports_association_chema
 #: model:ir.model.fields,field_description:sports_association_chema.field_sport_issue__description
+#: model:ir.model.fields,field_description:sports_association_chema.field_sport_sport__description
 #: model_terms:ir.ui.view,arch_db:sports_association_chema.sport_issue_view_form
 msgid "Description"
 msgstr "Descripción"
+
+#. module: sports_association_chema
+#: model:sport.issue.tag,name:sports_association_chema.sport_issue_tag_5
+msgid "Desgarro Muscular"
+msgstr ""
 
 #. module: sports_association_chema
 #: model:ir.model.fields,field_description:sports_association_chema.field_sport_clinic__display_name
 #: model:ir.model.fields,field_description:sports_association_chema.field_sport_issue__display_name
 #: model:ir.model.fields,field_description:sports_association_chema.field_sport_issue_tag__display_name
 #: model:ir.model.fields,field_description:sports_association_chema.field_sport_license__display_name
+#: model:ir.model.fields,field_description:sports_association_chema.field_sport_player__display_name
+#: model:ir.model.fields,field_description:sports_association_chema.field_sport_sport__display_name
+#: model:ir.model.fields,field_description:sports_association_chema.field_sport_team__display_name
 msgid "Display Name"
 msgstr "Mostrar nombre"
 
@@ -108,20 +173,41 @@ msgid "End Date"
 msgstr "Fecha de caducidad"
 
 #. module: sports_association_chema
+#: model:sport.issue.tag,name:sports_association_chema.sport_issue_tag_6
+msgid "Esguince"
+msgstr ""
+
+#. module: sports_association_chema
+#: model:sport.issue.tag,name:sports_association_chema.sport_issue_tag_3
+msgid "Fatiga"
+msgstr ""
+
+#. module: sports_association_chema
 #: model:ir.model.fields,field_description:sports_association_chema.field_sport_clinic__id
 #: model:ir.model.fields,field_description:sports_association_chema.field_sport_issue__id
 #: model:ir.model.fields,field_description:sports_association_chema.field_sport_issue_tag__id
 #: model:ir.model.fields,field_description:sports_association_chema.field_sport_license__id
+#: model:ir.model.fields,field_description:sports_association_chema.field_sport_player__id
+#: model:ir.model.fields,field_description:sports_association_chema.field_sport_sport__id
+#: model:ir.model.fields,field_description:sports_association_chema.field_sport_team__id
 msgid "ID"
 msgstr ""
 
 #. module: sports_association_chema
 #: model_terms:ir.ui.view,arch_db:sports_association_chema.sport_issue_view_form
+#: model_terms:ir.ui.view,arch_db:sports_association_chema.sport_sport_view_form
 msgid "Issue Name"
 msgstr "Nombre de la indicencia"
 
 #. module: sports_association_chema
+#: model:ir.ui.menu,name:sports_association_chema.sport_issue_tag_menu
+msgid "Issue Tag"
+msgstr "Etiqueta de incidencia"
+
+#. module: sports_association_chema
 #: model:ir.model.fields,field_description:sports_association_chema.field_sport_clinic__issue_ids
+#: model:ir.ui.menu,name:sports_association_chema.sport_main_issues_menu
+#: model_terms:ir.ui.view,arch_db:sports_association_chema.sport_clinic_view_form
 #: model_terms:ir.ui.view,arch_db:sports_association_chema.sport_issue_view_form
 #: model_terms:ir.ui.view,arch_db:sports_association_chema.sport_issue_view_tree
 msgid "Issues"
@@ -132,6 +218,9 @@ msgstr "Incidencias"
 #: model:ir.model.fields,field_description:sports_association_chema.field_sport_issue__write_uid
 #: model:ir.model.fields,field_description:sports_association_chema.field_sport_issue_tag__write_uid
 #: model:ir.model.fields,field_description:sports_association_chema.field_sport_license__write_uid
+#: model:ir.model.fields,field_description:sports_association_chema.field_sport_player__write_uid
+#: model:ir.model.fields,field_description:sports_association_chema.field_sport_sport__write_uid
+#: model:ir.model.fields,field_description:sports_association_chema.field_sport_team__write_uid
 msgid "Last Updated by"
 msgstr "Última modificación por"
 
@@ -140,8 +229,16 @@ msgstr "Última modificación por"
 #: model:ir.model.fields,field_description:sports_association_chema.field_sport_issue__write_date
 #: model:ir.model.fields,field_description:sports_association_chema.field_sport_issue_tag__write_date
 #: model:ir.model.fields,field_description:sports_association_chema.field_sport_license__write_date
+#: model:ir.model.fields,field_description:sports_association_chema.field_sport_player__write_date
+#: model:ir.model.fields,field_description:sports_association_chema.field_sport_sport__write_date
+#: model:ir.model.fields,field_description:sports_association_chema.field_sport_team__write_date
 msgid "Last Updated on"
 msgstr "Última modificación en"
+
+#. module: sports_association_chema
+#: model:sport.issue.tag,name:sports_association_chema.sport_issue_tag_1
+msgid "Lesión"
+msgstr ""
 
 #. module: sports_association_chema
 #: model:res.groups,name:sports_association_chema.res_groups_sport_association_manager
@@ -149,8 +246,16 @@ msgid "Manager"
 msgstr ""
 
 #. module: sports_association_chema
+#: model:ir.model.fields.selection,name:sports_association_chema.selection__sport_player__position__medio
+msgid "Medio"
+msgstr ""
+
+#. module: sports_association_chema
 #: model:ir.model.fields,field_description:sports_association_chema.field_sport_clinic__name
 #: model:ir.model.fields,field_description:sports_association_chema.field_sport_issue_tag__name
+#: model:ir.model.fields,field_description:sports_association_chema.field_sport_player__name
+#: model:ir.model.fields,field_description:sports_association_chema.field_sport_sport__name
+#: model:ir.model.fields,field_description:sports_association_chema.field_sport_team__name
 msgid "Name"
 msgstr "Nombre"
 
@@ -170,6 +275,33 @@ msgid "Phone"
 msgstr "Teléfono"
 
 #. module: sports_association_chema
+#: model:ir.ui.menu,name:sports_association_chema.sport_player_menu
+#: model_terms:ir.ui.view,arch_db:sports_association_chema.sport_player_view_form
+#: model_terms:ir.ui.view,arch_db:sports_association_chema.sport_player_view_tree
+msgid "Player"
+msgstr "Juagador"
+
+#. module: sports_association_chema
+#: model:ir.model.fields,field_description:sports_association_chema.field_sport_team__player_list_ids
+msgid "Player List"
+msgstr "Lista de Jugadores"
+
+#. module: sports_association_chema
+#: model_terms:ir.ui.view,arch_db:sports_association_chema.sport_team_view_form
+msgid "Players"
+msgstr "Jugadores"
+
+#. module: sports_association_chema
+#: model:ir.model.fields.selection,name:sports_association_chema.selection__sport_player__position__portero
+msgid "Portero"
+msgstr ""
+
+#. module: sports_association_chema
+#: model:ir.model.fields,field_description:sports_association_chema.field_sport_player__position
+msgid "Position"
+msgstr "Posición"
+
+#. module: sports_association_chema
 #: model:ir.model.fields,help:sports_association_chema.field_sport_issue__assistance
 msgid "Show if the issue was assisted by medical service"
 msgstr "Muestra si la incidencia fue asistida por servicio médico"
@@ -178,6 +310,15 @@ msgstr "Muestra si la incidencia fue asistida por servicio médico"
 #: model_terms:ir.ui.view,arch_db:sports_association_chema.sport_issue_view_form
 msgid "Solution"
 msgstr "Solución"
+
+#. module: sports_association_chema
+#: model:ir.actions.act_window,name:sports_association_chema.action_sport_sport
+#: model:ir.model.fields,field_description:sports_association_chema.field_sport_sport__team_ids
+#: model:ir.model.fields,field_description:sports_association_chema.field_sport_team__sport_id
+#: model:ir.ui.menu,name:sports_association_chema.sport_sport_menu
+#: model_terms:ir.ui.view,arch_db:sports_association_chema.sport_team_view_form
+msgid "Sport"
+msgstr "Deporte"
 
 #. module: sports_association_chema
 #: model:ir.module.category,name:sports_association_chema.ir_module_sports_association
@@ -197,17 +338,18 @@ msgid "Sport Clinics"
 msgstr "Clínicas Deportivas"
 
 #. module: sports_association_chema
-#: model:ir.actions.act_window,name:sports_association_chema.action_sport_window
 #: model:ir.model,name:sports_association_chema.model_sport_issue
 msgid "Sport Issue"
 msgstr "Incidencia Deportiva"
 
 #. module: sports_association_chema
+#: model:ir.actions.act_window,name:sports_association_chema.action_sport_tag_issue
 #: model:ir.model,name:sports_association_chema.model_sport_issue_tag
 msgid "Sport Issue Tag"
 msgstr "Etiqueta de incidencia deportiva"
 
 #. module: sports_association_chema
+#: model:ir.actions.act_window,name:sports_association_chema.action_sport_issue
 #: model:ir.ui.menu,name:sports_association_chema.sport_issue_menu
 msgid "Sport Issues"
 msgstr "Incidencias deportivas"
@@ -218,9 +360,39 @@ msgid "Sport License"
 msgstr "Licencia Deportiva"
 
 #. module: sports_association_chema
+#: model:ir.actions.act_window,name:sports_association_chema.action_sport_player
+#: model:ir.model,name:sports_association_chema.model_sport_player
+msgid "Sport Player"
+msgstr "Jugador"
+
+#. module: sports_association_chema
+#: model:ir.model,name:sports_association_chema.model_sport_sport
+msgid "Sport Sport"
+msgstr "Deporte Deporte"
+
+#. module: sports_association_chema
+#: model:ir.ui.menu,name:sports_association_chema.sport_structure_menu
+msgid "Sport Structure"
+msgstr "Estructura deportiva"
+
+#. module: sports_association_chema
+#: model:ir.actions.act_window,name:sports_association_chema.action_sport_team
+#: model:ir.model,name:sports_association_chema.model_sport_team
+#: model:ir.ui.menu,name:sports_association_chema.sport_team_menu
+msgid "Sport Team"
+msgstr "Equipo"
+
+#. module: sports_association_chema
 #: model:ir.model.fields,field_description:sports_association_chema.field_sport_license__start_date
 msgid "Start Date"
 msgstr "Fecha inicial"
+
+#. module: sports_association_chema
+#: model:ir.model.fields,field_description:sports_association_chema.field_sport_player__starting_team
+#: model_terms:ir.ui.view,arch_db:sports_association_chema.sport_player_view_form
+#: model_terms:ir.ui.view,arch_db:sports_association_chema.sport_team_view_form
+msgid "Starting Team"
+msgstr "Equipo Titular"
 
 #. module: sports_association_chema
 #: model:ir.model.fields,field_description:sports_association_chema.field_sport_issue__state
@@ -228,9 +400,39 @@ msgid "State"
 msgstr "Estado"
 
 #. module: sports_association_chema
+#: model_terms:ir.ui.view,arch_db:sports_association_chema.sport_player_view_form
+#: model_terms:ir.ui.view,arch_db:sports_association_chema.sport_team_view_form
+msgid "Substitutes"
+msgstr "Sustitutos"
+
+#. module: sports_association_chema
 #: model:ir.model.fields,field_description:sports_association_chema.field_sport_issue__tag_ids
 msgid "Tag"
 msgstr "Etiqueta"
+
+#. module: sports_association_chema
+#: model_terms:ir.ui.view,arch_db:sports_association_chema.sport_issue_tag_view_tree
+msgid "Tags"
+msgstr "Etiquetas"
+
+#. module: sports_association_chema
+#: model:ir.model.fields,field_description:sports_association_chema.field_sport_player__team_id
+#: model_terms:ir.ui.view,arch_db:sports_association_chema.sport_player_view_form
+#: model_terms:ir.ui.view,arch_db:sports_association_chema.sport_team_view_form
+#: model_terms:ir.ui.view,arch_db:sports_association_chema.sport_team_view_tree
+msgid "Team"
+msgstr "Equipos"
+
+#. module: sports_association_chema
+#: model_terms:ir.ui.view,arch_db:sports_association_chema.sport_player_view_form
+#: model_terms:ir.ui.view,arch_db:sports_association_chema.sport_team_view_form
+msgid "Team Name"
+msgstr "Nombre del Equipo"
+
+#. module: sports_association_chema
+#: model_terms:ir.ui.view,arch_db:sports_association_chema.sport_sport_view_form
+msgid "Teams"
+msgstr "Equipos"
 
 #. module: sports_association_chema
 #: model_terms:ir.ui.view,arch_db:sports_association_chema.sport_issue_view_form
@@ -257,6 +459,11 @@ msgstr "clínica"
 #: model:ir.model.fields.selection,name:sports_association_chema.selection__sport_issue__state__draft
 msgid "draft"
 msgstr "borrador"
+
+#. module: sports_association_chema
+#: model:ir.model.fields,field_description:sports_association_chema.field_sport_team__logo
+msgid "logo"
+msgstr ""
 
 #. module: sports_association_chema
 #: model:ir.model.fields,field_description:sports_association_chema.field_sport_issue__name

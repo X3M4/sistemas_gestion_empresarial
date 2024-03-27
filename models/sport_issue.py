@@ -1,4 +1,4 @@
-from odoo import models, fields
+from odoo import models, fields, api
 
 class SportIssue(models.Model):
     _name = 'sport.issue'
@@ -31,6 +31,22 @@ class SportIssue(models.Model):
         default = 'draft')
     
     
+    color = fields.Integer(
+        string='Color',
+        default=0
+    )
+    
+    cost = fields.Float(
+        string='Cost',
+    )
+    
+    user_phone = fields.Char(
+        string='User Phone',
+        related='user_id.phone',
+        store = True
+    )
+    
+        
     user_id = fields.Many2one(
         string='User',
         comodel_name='res.users',
@@ -46,6 +62,14 @@ class SportIssue(models.Model):
         string='solution',
     )
     
+    assigned = fields.Boolean(
+        string='Assigned',
+        compute='_compute_assigned',
+        inverse = '_inverse_assigned',
+        search = '_search_assigned',
+        store=True
+    )
+    
     
     clinic_id = fields.Many2one(
         string='clinic',
@@ -59,6 +83,23 @@ class SportIssue(models.Model):
     )
     
     
+    @api.depends('user_id')   
+    def _compute_assigned(self):
+        for record in self:
+            record.assigned = bool(record.user_id)
+    
+    def _inverse_assigned(self):
+        for record in self:
+            if not record.assigned:
+                record.user_id = False
+            else:
+                record.user_id = self.env.user
+    
+    def _search_assigned(self, operator, value):
+        if operator == '=':
+            return [('user_id', operator, value)]
+        else:
+            return[]
     
     def action_open(self):
         self.ensure_one() #Se usa para asegurarse de que la función solamente se ejecuta sobre un registro
