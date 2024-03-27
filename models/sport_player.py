@@ -1,4 +1,4 @@
-from odoo import models, fields
+from odoo import models, fields, api
 
 class SportPlayer(models.Model):
     _name='sport.player'
@@ -10,9 +10,15 @@ class SportPlayer(models.Model):
         required=True
     )
     
+    dob = fields.Date(
+        string='Date of Birth',
+    )
+    
     
     age = fields.Integer(
         string='Age',
+        compute='_compute_age',
+        store=True
     )
     
     position = fields.Selection(
@@ -33,13 +39,23 @@ class SportPlayer(models.Model):
         string='Starting Team',
     )
     
+    sport = fields.Char(
+        string='Sport',
+        related='team_id.sport_id.name',
+        store = True
+    )
+    
+    
     def action_make_starter(self):
         self.starting_team = True
     
     def action_make_substitute(self):
         self.starting_team = False
     
-    
-    
-    
-    
+    @api.depends('dob')
+    def _compute_age(self):
+        for record in self:
+            if record.dob:
+                record.age = (fields.Date.today() - record.dob).days / 365
+            else:
+                record.age = 0

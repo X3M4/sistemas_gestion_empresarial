@@ -32,12 +32,16 @@
                             <field name="name" placeholder="Team Name" />
                         </h1>
                         <h2>
+                            <field name="dob" />
+                        </h2>
+                        <h2>
                             <field name="age" />
                         </h2>
                     </div>
                     <group>
                         <field name="position" />
                         <field name="starting_team" />
+                        <field name="sport" />
                     </group>
 
                     <notebook>

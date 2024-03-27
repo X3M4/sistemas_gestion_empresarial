@@ -1,4 +1,4 @@
-from odoo import models, fields, api
+from odoo import models, fields, api, Command
 
 class SportIssue(models.Model):
     _name = 'sport.issue'
@@ -112,3 +112,12 @@ class SportIssue(models.Model):
     def action_done(self):
         self.ensure_one() #Se usa para asegurarse de que la función solamente se ejecuta sobre un registro
         self.state = 'done'
+    
+    def action_add_tag(self):
+        for record in self:
+            tag_ids = self.env['sport.issue.tag'].search([('name', 'ilike', record.name)])
+            if tag_ids:
+                record.tag_ids = [Command.set(tag_ids.ids)]
+            else:
+                record.tag_ids = [Command.create({'name': record.name})]
+    
