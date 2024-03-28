@@ -27,9 +27,11 @@ class SportsLeague(models.Model):
         inverse_name='league_id',
     )
     
-    
     def set_score(self):
-        pass
+        for record in self.sport_league_ids:
+            team = record.team_id
+            score_points = self.env['sport.match'].search([('sport_id', '=', self.sport_id.id), ('winner_team_id', '=', team.id)]).mapped('score_winning')
+            record.points = sum(score_points)
     
 class SportLeagueLine(models.Model):
     _name = 'sport.league.line'

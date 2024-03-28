@@ -16,6 +16,8 @@ class SportMatch(models.Model):
     winner_team_id = fields.Many2one(
         string='Winner Team',
         comodel_name='sport.team',
+        compute = '_compute_winner_team_id',
+        store = True,
     )
     
     score_winning = fields.Integer(
@@ -28,7 +30,12 @@ class SportMatch(models.Model):
         comodel_name='sport.match.line',
         inverse_name='match_id',
     )
-    
+    @api.depends('match_line_ids.score')
+    def _compute_winner_team_id(self):
+        for record in self:
+            winner = record.match_line_ids.sorted(key=lambda r: r.score, reverse=True)
+            record.winner_team_id = winner[0].team_id.id if winner else False
+
     
 #Match Lines Class    
 class SportMatchLine(models.Model):
