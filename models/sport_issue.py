@@ -8,10 +8,8 @@ class SportIssue(models.Model):
         string ='name', 
         required=True) 
     
-    
     description = fields.Text(
         string = 'Description')
-    
     
     date = fields.Date(
         string ='Date')
@@ -30,7 +28,6 @@ class SportIssue(models.Model):
             ('done', 'Done')],
         default = 'draft')
     
-    
     color = fields.Integer(
         string='Color',
         default=0
@@ -46,7 +43,6 @@ class SportIssue(models.Model):
         store = True
     )
     
-        
     user_id = fields.Many2one(
         string='User',
         comodel_name='res.users',
@@ -70,18 +66,21 @@ class SportIssue(models.Model):
         store=True
     )
     
-    
     clinic_id = fields.Many2one(
         string='clinic',
         comodel_name='sport.clinic'
     )
     
-    
     tag_ids = fields.Many2many(
         string='Tag',
         comodel_name='sport.issue.tag'
-    )
+    ) 
     
+    action_ids = fields.One2many(
+        string='Action to do',
+        comodel_name='sport.issue.action',
+        inverse_name='issue_id'
+    )
     
     @api.depends('user_id')   
     def _compute_assigned(self):

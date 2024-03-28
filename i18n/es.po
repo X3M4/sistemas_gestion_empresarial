@@ -279,7 +279,7 @@ msgstr "Teléfono"
 #: model_terms:ir.ui.view,arch_db:sports_association_chema.sport_player_view_form
 #: model_terms:ir.ui.view,arch_db:sports_association_chema.sport_player_view_tree
 msgid "Player"
-msgstr "Juagador"
+msgstr "Jugador"
 
 #. module: sports_association_chema
 #: model:ir.model.fields,field_description:sports_association_chema.field_sport_team__player_list_ids

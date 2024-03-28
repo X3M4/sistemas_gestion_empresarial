@@ -17,6 +17,7 @@ class SportTeam(models.Model):
     number = fields.Integer(
         string='Roster',
         compute='_compute_number',
+        store=True,
     )
     
     

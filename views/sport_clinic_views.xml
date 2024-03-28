@@ -27,6 +27,7 @@
                         <field name="name" />
                         <field name="phone" />
                         <field name="email" />
+                        <field name="available" />
                     </group>
                     <notebook>
                         <page name="issues" string="Issues">

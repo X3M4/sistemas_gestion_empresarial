@@ -16,6 +16,19 @@
         </field>
     </record>
 
+    <!-- sport.player simple tree view-->
+    <record id="sport_player_simple_view_tree" model="ir.ui.view">
+        <field name="name">sport_player.view.tree</field>
+        <field eval="100" name="priority" />
+        <field name="model">sport.player</field>
+        <field name="arch" type="xml">
+            <tree string="Player">
+                <field name="name" />
+                <field name="age" />
+            </tree>
+        </field>
+    </record>
+
     <!-- sport_player form view-->
     <record id="sport_player_view_form" model="ir.ui.view">
         <field name="name">sport_player.view.form</field>
@@ -56,6 +69,45 @@
                     </notebook>
                 </sheet>
             </form>
+        </field>
+    </record>
+
+    <!-- sport_player simple form view-->
+    <record id="sport_player_simple_view_form" model="ir.ui.view">
+        <field name="name">sport_player.view.form</field>
+        <field eval="100" name="priority" />
+        <field name="model">sport.player</field>
+        <field name="arch" type="xml">
+            <form string="Player">
+                <header>
+                    <button string="Starting Team" name="action_make_starter" type="object" class="oe_highlight"/>
+                    <button string="Substitutes" name="action_make_substitute" type="object" class="oe_highlight"/>
+                </header>
+                <sheet>
+                    <group>
+                        <field name="name" />
+                        <field name="age" />
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- sport.player search view-->
+    <record id="sport_player_view_search" model="ir.ui.view">
+        <field name="name">sport_player.view.search</field>
+        <field name="model">sport.player</field>
+        <field name="arch" type="xml">
+            <search string="Players">
+                <field name="name" />
+                <field name="sport" />
+                <field name="team_id" />
+                <filter name="starting_team" string="Starting Team" domain="[('starting_team', '=', 'True')]"/>
+                <filter name="substitutes" string="Non Starter" domain="[('starting_team', '=', 'False')]"/>
+                <filter name="team" string="Team" context="{'group_by': 'team_id'}" />
+                <filter name="sport" string="Sport" context="{'group_by': 'sport'}" />
+                <filter name="birthday" string="Birthday" context="{'group_by': 'dob'}" />
+            </search>
         </field>
     </record>
 
