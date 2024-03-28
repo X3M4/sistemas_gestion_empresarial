@@ -26,6 +26,8 @@
              "views/sport_team_views.xml",
              "views/sport_sport_views.xml",
              "views/sport_player_views.xml",
+             "views/sport_league_views.xml",
+             "views/sport_match_view.xml",
              "views/sport_issue_menu.xml",
              ],
 }

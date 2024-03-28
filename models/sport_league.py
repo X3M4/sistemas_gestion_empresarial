@@ -28,5 +28,26 @@ class SportsLeague(models.Model):
     )
     
     
+    def set_score(self):
+        pass
+    
+class SportLeagueLine(models.Model):
+    _name = 'sport.league.line'
+    _description = 'Sports League Line'
+    _order = 'points desc'
+    
+    league_id = fields.Many2one(
+        string='League',
+        comodel_name='sport.league',
+    )
+    
+    team_id = fields.Many2one(
+        string='Team',
+        comodel_name='sport.team',
+    )
+    
+    points = fields.Integer(
+        string='Points',
+    )
     
     

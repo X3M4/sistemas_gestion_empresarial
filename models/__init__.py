@@ -7,5 +7,4 @@ from . import sport_player
 from . import sport_team
 from . import sport_issue_action
 from . import sport_league
-from . import sport_league_line
 from . import sport_match
