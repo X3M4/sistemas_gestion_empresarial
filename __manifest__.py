@@ -18,6 +18,7 @@
     
     "data": [
             "data/sport_issue_tag_data.xml",
+            "data/ir_cron.xml",
             "security/groups.xml",
             "security/ir.model.access.csv",
              "views/sport_issue_views.xml",

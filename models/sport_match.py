@@ -35,7 +35,6 @@ class SportMatch(models.Model):
         for record in self:
             winner = record.match_line_ids.sorted(key=lambda r: r.score, reverse=True)
             record.winner_team_id = winner[0].team_id.id if winner else False
-
     
 #Match Lines Class    
 class SportMatchLine(models.Model):

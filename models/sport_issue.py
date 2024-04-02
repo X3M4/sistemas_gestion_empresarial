@@ -1,8 +1,12 @@
-from odoo import models, fields, api, Command
+from odoo import models, fields, api, Command, _
+from odoo.exceptions import ValidationError, UserError
 
 class SportIssue(models.Model):
     _name = 'sport.issue'
     _description = 'Sport Issue'
+    
+    '''def _get_default_user(self):
+        return self.env.user'''
     
     name = fields.Char(
         string ='name', 
@@ -46,6 +50,7 @@ class SportIssue(models.Model):
     user_id = fields.Many2one(
         string='User',
         comodel_name='res.users',
+        default=lambda self: self.env.user,
     )
     
     sequence = fields.Integer(
@@ -82,6 +87,24 @@ class SportIssue(models.Model):
         inverse_name='issue_id'
     )
     
+    #CONSTRAINS
+    @api.constrains('cost')
+    def _check_cost(self):
+        for record in self:
+            if record.cost < 0:
+                raise ValidationError(_('Cost cannot be negative')) # dl símbolo _ sirve para indica que se puede traducir. Se debe importar
+            
+    
+    @api.onchange('clinic_id')
+    def _onchange_clinic(self):
+        for record in self:
+            if record.clinic_id:
+                record.assistance = True
+            else:
+                record.assistance = False
+                      
+                      
+    
     @api.depends('user_id')   
     def _compute_assigned(self):
         for record in self:
@@ -109,8 +132,10 @@ class SportIssue(models.Model):
         self.state = 'draft'
     
     def action_done(self):
-        self.ensure_one() #Se usa para asegurarse de que la función solamente se ejecuta sobre un registro
-        self.state = 'done'
+        for record in self:
+            if not record.date:
+                raise UserError(_('Date is required'))
+            self.state = 'done'
     
     def action_add_tag(self):
         for record in self:
