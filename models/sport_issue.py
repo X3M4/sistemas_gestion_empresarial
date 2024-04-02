@@ -16,9 +16,10 @@ class SportIssue(models.Model):
         string = 'Description')
     
     date = fields.Date(
-        string ='Date')
-    
-    
+        string ='Date',
+        default=fields.Date.today(),
+        )
+       
     assistance = fields.Boolean(
         string='Assistance',
         help = 'Show if the issue was assisted by medical service')
@@ -43,7 +44,6 @@ class SportIssue(models.Model):
     
     user_phone = fields.Char(
         string='User Phone',
-        related='user_id.phone',
         store = True
     )
     
@@ -87,14 +87,26 @@ class SportIssue(models.Model):
         inverse_name='issue_id'
     )
     
+    player_id = fields.Many2one(
+        string='Player',
+        comodel_name='sport.player',
+    )
+    
+    
+    #Añadir restricción con _sql_constraints en el que el nombre de la incidencia sea único.
+    _sql_constraints = [
+        ('name_unique', 'UNIQUE(name)', 'The name of the issue must be unique!')
+    ]
+    
     #CONSTRAINS
     @api.constrains('cost')
     def _check_cost(self):
         for record in self:
             if record.cost < 0:
-                raise ValidationError(_('Cost cannot be negative')) # dl símbolo _ sirve para indica que se puede traducir. Se debe importar
-            
+                raise ValidationError(_('Cost cannot be negative')) # El símbolo _ sirve para indica que se puede traducir. Se debe importar
     
+    
+    # ACCIONES ONCHANGE
     @api.onchange('clinic_id')
     def _onchange_clinic(self):
         for record in self:
@@ -103,7 +115,15 @@ class SportIssue(models.Model):
             else:
                 record.assistance = False
                       
-                      
+    #Cambiar la funcionalidad de user_phone, quitar el related y añadir un onchange para que cuando se cambie el usuario se traiga el teléfono de este usuario
+    @api.onchange('user_id')
+    def _onchange_user_phone(self):
+        for record in self:
+            if record.user_id:
+                record.user_phone = record.user_id.phone
+            else:
+                record.user_phone = False        
+    
     
     @api.depends('user_id')   
     def _compute_assigned(self):
@@ -116,6 +136,8 @@ class SportIssue(models.Model):
                 record.user_id = False
             else:
                 record.user_id = self.env.user
+    
+    
     
     def _search_assigned(self, operator, value):
         if operator == '=':
@@ -145,3 +167,10 @@ class SportIssue(models.Model):
             else:
                 record.tag_ids = [Command.create({'name': record.name})]
     
+    #Cron que busque las etiquetas de incidencias y elimine las que no se están usando.
+    def _cron_unlink_unused_tags(self):
+        tag_ids = self.env['sport.issue.tag'].search([])
+        for tag in tag_ids:
+            issue = self.env['sport.issue'].search([('tag_ids', 'in', tag.id)])
+            if not issue:
+                tag.unlink()

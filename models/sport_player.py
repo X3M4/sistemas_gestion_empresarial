@@ -37,6 +37,7 @@ class SportPlayer(models.Model):
     
     starting_team = fields.Boolean(
         string='Starting Team',
+        default = True,
     )
     
     sport = fields.Char(

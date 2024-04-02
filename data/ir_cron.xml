@@ -12,4 +12,15 @@
         <field name="user_id" ref="base.user_root" />
     </record>
 
+    <record id="sport_issue_cron" model="ir.cron">
+        <field name="name">Remove unused tags</field>
+        <field name="model_id" ref="model_sport_issue"/>
+        <field name="interval_number">1</field>
+        <field name="interval_type">days</field>
+        <field name="numbercall">-1</field>
+        <field name="state">code</field>
+        <field name="code">model._cron_unlink_unused_tags()</field>
+        <field name="user_id" ref="base.user_root" />
+    </record>
+
 </odoo>
