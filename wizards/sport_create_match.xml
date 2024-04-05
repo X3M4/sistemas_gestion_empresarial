@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+     <!-- sport.create.match form view to wizard-->
+     <record id="view_sport_create_match" model="ir.ui.view">
+        <field name="name">view_sport_create_match</field>
+        <field name="model">sport.create.match</field>
+        <field name="arch" type="xml">
+            <form string="Create match">
+                <sheet>
+                    <group>
+                        <field name="sport_id" />
+                        <field name="date" />
+                        <field name="league_id" />
+                        <field name="team_ids" />
+                    </group>
+                    <footer>
+                        <button string="Create" name="create_match" type="object" class="btn-success" />
+                        <button string="Cancel" class="btn-warning" special="cancel" />
+                    </footer>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!--sport.create.match
+    action view to wizard-->
+    <record id="sport_create_match_action" model="ir.actions.act_window">
+        <field name="name">Create Match</field>
+        <field name="res_model">sport.create.match</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+        <field name="binding_model_id" ref="sports_association_chema.model_sport_match" />
+        <field name="binding_view_types">list,form</field>
+    </record>
+
+</odoo>

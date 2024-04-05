@@ -38,6 +38,8 @@
                 <header>
                     <button string="Starting Team" name="action_make_starter" type="object" class="oe_highlight"/>
                     <button string="Substitutes" name="action_make_substitute" type="object" class="oe_highlight"/>
+                    <button string="Create Issue Issue" name="%(sport_create_issue_action)d" type="action" class="btn-success" 
+                        context="{'default_player_id':id}"/>
                 </header>
                 <sheet>
                     <div class="oe_title">

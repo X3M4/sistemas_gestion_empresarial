@@ -30,6 +30,14 @@ class SportMatch(models.Model):
         comodel_name='sport.match.line',
         inverse_name='match_id',
     )
+    
+    
+    league_id = fields.Many2one(
+        string='League',
+        comodel_name='sport.league',
+        ondelete='restrict',
+    )
+    
     @api.depends('match_line_ids.score')
     def _compute_winner_team_id(self):
         for record in self:

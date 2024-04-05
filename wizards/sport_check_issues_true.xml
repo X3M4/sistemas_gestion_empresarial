@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="sport_check_issue_true_view_form" model="ir.ui.view">
+        <field name="name">sport_check_issue_true.view.form</field>
+        <field name="model">sport.check.issues.true</field>
+        <field name="arch" type="xml">
+            <form string="">
+                <sheet>
+                    <group>
+                        <field name="date" />
+                    </group>
+                    <footer>
+                        <button string="Set done" name="set_done" type="object" class="btn-success"/>
+                        <button string="Cancel" class="btn-warning" special="cancel"/>
+                    </footer>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!--sport.check.issues.true action view to wizard-->
+    <record id="sport_check_issue_true_action" model="ir.actions.act_window">
+        <field name="name">Set done all issues</field>
+        <field name="res_model">sport.check.issues.true</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+        <field name="binding_model_id" ref="sports_association_chema.model_sport_issue" />
+        <field name="binding_view_types">list,form</field>
+    </record>
+
+
+</odoo>

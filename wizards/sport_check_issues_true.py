@@ -10,12 +10,18 @@ class SportCheckIssuesTrue(models.TransientModel):
         string='Date'
     )
     
-    def set_done(self):
+    
+    '''def set_done(self):
         active_ids = self.env.context.get('active_ids')
         issues = self.env['sport.issue'].browse(active_ids)
         issues.write({'date': self.date})
-        issues.action_done
-            
-    #Me quedo en el video en el momento 01.00.45
+        issues.action_done()'''
+    
+    def set_done(self):
+        issues = self.env['sport.issue'].search(['|', ('date', '=', self.date), ('date', '=', False)])
+        for issue in issues:
+            issue.action_done()
 
+
+    
     

@@ -12,8 +12,8 @@ class SportPlayer(models.Model):
     
     dob = fields.Date(
         string='Date of Birth',
+        copy=False,
     )
-    
     
     age = fields.Integer(
         string='Age',
@@ -23,6 +23,7 @@ class SportPlayer(models.Model):
     
     position = fields.Selection(
         string='Position',
+        copy=False,
         selection=[
             ('portero', 'Portero'), 
             ('defensa', 'Defensa'),
@@ -38,13 +39,25 @@ class SportPlayer(models.Model):
     starting_team = fields.Boolean(
         string='Starting Team',
         default = True,
+        copy=False,
     )
     
     sport = fields.Char(
         string='Sport',
         related='team_id.sport_id.name',
-        store = True
+        store = True,
     )
+    
+    active = fields.Boolean(
+        string='Active',
+        default=True,
+    )
+    
+    
+    player_id = fields.Many2one(
+        'sport.issue', 
+        string='player',
+        copy=False)
     
     
     def action_make_starter(self):
