@@ -1,4 +1,5 @@
 from odoo import models, fields, api
+from odoo.exceptions import ValidationError
 
 class SportsLeague(models.Model):
     _name = 'sport.league'
@@ -27,6 +28,30 @@ class SportsLeague(models.Model):
         inverse_name='league_id',
     )
     
+    match_ids = fields.One2many(
+        string='Matches',
+        comodel_name='sport.match',
+        inverse_name='league_id',
+    )
+    
+    match_count = fields.Integer(
+        string='Match Count',
+        compute = '_compute_match_count',
+    )
+    
+    def _compute_match_count(self):
+        for record in self:
+            record.match_count = len(record.match_ids)
+    
+    def action_view_matches(self):
+        return{
+            'name':'Matches',
+            'type': 'ir.actions.act_window',
+            'res_model':'sport.match',
+            'view_mode':'tree,form',
+            'domain': [('league_id', '=', self.id)],
+        }   
+    
     def set_score(self):
         for record in self.sport_league_ids:
             team = record.team_id
@@ -36,6 +61,17 @@ class SportsLeague(models.Model):
     def _cron_set_score(self):
         leagues = self.search([])
         leagues.set_score()
+    
+    
+    @api.constrains('start_date', 'end_date')
+    def _check_start_date(self):
+        for record in self:
+            if record.start_date and record.end_date:
+                if record.start_date > record.end_date:
+                    raise ValidationError('Start date must be earlier than end date')
+            
+    
+    
     
 class SportLeagueLine(models.Model):
     _name = 'sport.league.line'

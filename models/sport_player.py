@@ -3,12 +3,15 @@ from odoo import models, fields, api
 class SportPlayer(models.Model):
     _name='sport.player'
     _description='Sport Player'
+    #_inherits = {'res.partner': 'partner_id'}
     
     
     name = fields.Char(
         string='Name',
         required=True
     )
+    
+    #partner_id = fields.Many2one('res.partner', string='Partner', required=True, ondelete='cascade', inherited=True)
     
     dob = fields.Date(
         string='Date of Birth',
@@ -52,7 +55,6 @@ class SportPlayer(models.Model):
         string='Active',
         default=True,
     )
-    
     
     player_id = fields.Many2one(
         'sport.issue', 

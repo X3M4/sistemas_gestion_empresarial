@@ -26,11 +26,16 @@
                     <button string="Set Score" name="set_score" type="object"
                         class="oe_highlight" />
 
-                    <button string="New Match" name="%(sport_create_match_action)d"
+                    <button string="New Match" name="%(sport_create_match_action)d" context="{'default_league_id': id }" 
                         type="action" class="btn-success" />
 
                 </header>
                 <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button class="oe_stat_button" name="action_view_matches" type="object" icon="fa-tasks">
+                        <field string="Matches" name="match_count" widget="statinfo" />
+                    </button>
+                    </div>
                     
                     <group>
                         <field name="name" />

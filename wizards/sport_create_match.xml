@@ -12,7 +12,7 @@
                         <field name="sport_id" />
                         <field name="date" />
                         <field name="league_id" />
-                        <field name="team_ids" />
+                        <field name="team_ids" widget="many2many"/>
                     </group>
                     <footer>
                         <button string="Create" name="create_match" type="object" class="btn-success" />

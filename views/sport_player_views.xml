@@ -12,6 +12,7 @@
                 <field name="position" />
                 <field name="starting_team" />
                 <field name="team_id" />
+                <field name="active" />
             </tree>
         </field>
     </record>

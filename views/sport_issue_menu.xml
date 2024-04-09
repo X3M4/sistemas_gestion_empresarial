@@ -7,12 +7,7 @@
             sequence="10">
         </menuitem>
 
-        <menuitem
-            id="sport_clinic_menu"
-            name="Sport Clinics"
-            action="sports_association_chema.action_sport_clinic"
-            parent="sports_association_chema.sport_menu"
-            sequence="10" />
+        
 
         <!-- Sport Issues menu-->
         <menuitem
@@ -32,6 +27,13 @@
             id="sport_issue_tag_menu"
             name="Issue Tag"
             action="sports_association_chema.action_sport_tag_issue"
+            parent="sports_association_chema.sport_main_issues_menu"
+            sequence="10" />
+        
+            <menuitem
+            id="sport_clinic_menu"
+            name="Sport Clinics"
+            action="sports_association_chema.action_sport_clinic"
             parent="sports_association_chema.sport_main_issues_menu"
             sequence="10" />
 
@@ -80,5 +82,18 @@
 
         <!-- Sport Structure ending-->
 
+        <!--Sport Ticket Menu-->
+        <menuitem
+            id="sport_tickets_main_menu"
+            name="Sport Tickets"
+            parent="sports_association_chema.sport_menu"
+            sequence="10" />
+
+        <menuitem
+            id="sport_ticket_menu"
+            name="Tickets"
+            action="sports_association_chema.sport_ticket_action"
+            parent="sports_association_chema.sport_tickets_main_menu"
+            sequence="10"/>
     </data>
 </odoo>

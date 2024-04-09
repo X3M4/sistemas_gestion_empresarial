@@ -21,8 +21,7 @@
             "data/ir_cron.xml",
             "security/groups.xml",
             "security/ir.model.access.csv",
-             "report/sport_issues_report.xml",
-             "report/sport_league_report.xml",
+            
              "views/sport_issue_views.xml",
              "views/sport_clinic_views.xml",
              "views/sport_issue_tag_views.xml",
@@ -31,9 +30,15 @@
              "views/sport_player_views.xml",
              "views/sport_league_views.xml",
              "views/sport_match_view.xml",
+             
+             "views/sport_ticket_views.xml",
              "views/sport_issue_menu.xml",
              "wizards/sport_create_issue.xml",
              "wizards/sport_check_issues_true.xml",
              "wizards/sport_create_match.xml",
+             
+              "report/sport_issues_report.xml",
+             "report/sport_league_report.xml",
+             "report/sport_match_results.xml",
              ],
 }

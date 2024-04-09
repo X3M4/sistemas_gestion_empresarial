@@ -38,6 +38,11 @@ class SportMatch(models.Model):
         ondelete='restrict',
     )
     
+    match_line_ids_count = fields.Integer(
+        string = "Number of Matches",
+    )
+    
+            
     @api.depends('match_line_ids.score')
     def _compute_winner_team_id(self):
         for record in self:
@@ -63,6 +68,9 @@ class SportMatchLine(models.Model):
          string='Score',
      )
      
+     _sql_constraints = [
+        ('team_id_unique', 'UNIQUE(match_id,team_id)', 'The team must not be duplicated!')
+    ]
         
     
     
