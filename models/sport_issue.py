@@ -4,94 +4,72 @@ from odoo.exceptions import ValidationError, UserError
 class SportIssue(models.Model):
     _name = 'sport.issue'
     _description = 'Sport Issue'
-    
-    '''def _get_default_user(self):
-        return self.env.user'''
-    
+    _inherit = ['portal.mixin', 'mail.thread', 'mail.activity.mixin']
+
+    # def _get_default_user(self):
+    #     return self.env.user
+
     name = fields.Char(
-        string ='name', 
-        required=True) 
+        string='Name', 
+        required=True, 
+        copy=False)
     
     description = fields.Text(
-        string = 'Description')
+        string='Description')
     
     date = fields.Date(
-        string ='Date',
-        default=fields.Date.today(),
-        )
-       
-    assistance = fields.Boolean(
-        string='Assistance',
-        help = 'Show if the issue was assisted by medical service')
+        string='Date', 
+        default=fields.Date.today)
     
+    assistance = fields.Boolean(
+        string='Assistance', 
+        help='Show if the issue has assistance')
     
     state = fields.Selection(
+        [('draft', 'Draft'),
+         ('open', 'Open'),
+         ('done', 'Done')],
         string='State',
-        selection=[
-            ('draft', 'draft'), 
-            ('open', 'Open'),
-            ('done', 'Done')],
-        default = 'draft')
-    
+        default='draft',
+        tracking=True
+    )
+
     color = fields.Integer(
-        string='Color',
-        default=0
-    )
-    
-    cost = fields.Float(
-        string='Cost',
-    )
-    
-    user_phone = fields.Char(
-        string='User Phone',
-        store = True
-    )
+        string='Color', 
+        default=0)
     
     user_id = fields.Many2one(
-        string='User',
-        comodel_name='res.users',
-        default=lambda self: self.env.user,
-    )
+        'res.users', 
+        string='User', 
+        default=lambda self: self.env.user)
     
     sequence = fields.Integer(
-        string='sequence',
-        default=10
-        
-    )
+        string='Sequence', 
+        default=10)
     
-    solution = fields.Html(
-        string='solution',
-    )
+    solution = fields.Html('Solution')
     
     assigned = fields.Boolean(
-        string='Assigned',
-        compute='_compute_assigned',
-        inverse = '_inverse_assigned',
-        search = '_search_assigned',
-        store=True
-    )
+        'Assigned', 
+        compute='_compute_assigned', 
+        inverse='_inverse_assigned',
+        store=True)
     
     clinic_id = fields.Many2one(
-        string='clinic',
-        comodel_name='sport.clinic'
-    )
-    
-    tag_ids = fields.Many2many(
-        string='Tag',
-        comodel_name='sport.issue.tag'
-    ) 
-    
-    action_ids = fields.One2many(
-        string='Action to do',
-        comodel_name='sport.issue.action',
-        inverse_name='issue_id'
-    )
+        'sport.clinic', 
+        string='Clinic')
     
     player_id = fields.Many2one(
-        string='Player',
-        comodel_name='sport.player',
-    )
+        'sport.player', 
+        string='Player')
     
+    tag_ids = fields.Many2many('sport.issue.tag', 'sport_issue_tags_rel', 'issue_id', 'tag_id', string='Tags')
+
+    cost = fields.Float('Cost')
+
+    user_phone = fields.Char('User phone')
+
+    action_ids = fields.One2many('sport.issue.action', 'issue_id', string='Actions to do')
     
     #Añadir restricción con _sql_constraints en el que el nombre de la incidencia sea único.
     _sql_constraints = [
@@ -158,6 +136,9 @@ class SportIssue(models.Model):
             if not record.date:
                 raise UserError(_('Date is required'))
             self.state = 'done'
+            #Para añadir el mensaje de la creación de la incidencia
+            #msg_body = (_(f"The issue {record.name} ha passed to state {record.state} on date: {record.date}"))
+            record.message_post(body=(_(f"The issue {record.name} ha passed to state {record.state} on date: {record.date}")))
     
     def action_add_tag(self):
         for record in self:

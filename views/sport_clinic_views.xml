@@ -26,7 +26,9 @@
                 <sheet>
                     <!--Smartbuton for issues-->
                     <div class="oe_button_box" name="button_box">
-                        <button name="action_view_issues" type="object" class="oe_stat_button" icon="fa-tasks"> <!--fontawesome page-->
+                        <button name="action_view_issues" 
+                            context="{'default_clinic_id':id, 'default_state':'draft'}" 
+                            type="object" class="oe_stat_button" icon="fa-tasks"> <!--fontawesome page-->
                             <field name="issue_count" string="Issues" widget="statinfo"/>
                         </button>
                     </div>

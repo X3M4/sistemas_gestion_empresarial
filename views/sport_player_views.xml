@@ -13,6 +13,9 @@
                 <field name="starting_team" />
                 <field name="team_id" />
                 <field name="active" />
+                <field name="city" />
+                <field name="country_id" />
+                <field name="zip" />
             </tree>
         </field>
     </record>
@@ -37,10 +40,13 @@
         <field name="arch" type="xml">
             <form string="Player">
                 <header>
-                    <button string="Starting Team" name="action_make_starter" type="object" class="oe_highlight"/>
-                    <button string="Substitutes" name="action_make_substitute" type="object" class="oe_highlight"/>
-                    <button string="Create Issue Issue" name="%(sport_create_issue_action)d" type="action" class="btn-success" 
-                        context="{'default_player_id':id}"/>
+                    <button string="Starting Team" name="action_make_starter" type="object"
+                        class="oe_highlight" />
+                    <button string="Substitutes" name="action_make_substitute" type="object"
+                        class="oe_highlight" />
+                    <button string="Create Issue Issue" name="%(sport_create_issue_action)d"
+                        type="action" class="btn-success"
+                        context="{'default_player_id':id}" />
                 </header>
                 <sheet>
                     <div class="oe_title">
@@ -58,6 +64,9 @@
                         <field name="position" />
                         <field name="starting_team" />
                         <field name="sport" />
+                        <field name="city" />
+                        <field name="country_id" />
+                        <field name="zip" />
                     </group>
 
                     <notebook>
@@ -83,8 +92,10 @@
         <field name="arch" type="xml">
             <form string="Player">
                 <header>
-                    <button string="Starting Team" name="action_make_starter" type="object" class="oe_highlight"/>
-                    <button string="Substitutes" name="action_make_substitute" type="object" class="oe_highlight"/>
+                    <button string="Starting Team" name="action_make_starter" type="object"
+                        class="oe_highlight" />
+                    <button string="Substitutes" name="action_make_substitute" type="object"
+                        class="oe_highlight" />
                 </header>
                 <sheet>
                     <group>
@@ -105,8 +116,10 @@
                 <field name="name" />
                 <field name="sport" />
                 <field name="team_id" />
-                <filter name="starting_team" string="Starting Team" domain="[('starting_team', '=', 'True')]"/>
-                <filter name="substitutes" string="Non Starter" domain="[('starting_team', '=', 'False')]"/>
+                <filter name="starting_team" string="Starting Team"
+                    domain="[('starting_team', '=', 'True')]" />
+                <filter name="substitutes" string="Non Starter"
+                    domain="[('starting_team', '=', 'False')]" />
                 <filter name="team" string="Team" context="{'group_by': 'team_id'}" />
                 <filter name="sport" string="Sport" context="{'group_by': 'sport'}" />
                 <filter name="birthday" string="Birthday" context="{'group_by': 'dob'}" />
@@ -114,7 +127,8 @@
         </field>
     </record>
 
-    <!--sport.player action view-->
+    <!--sport.player
+    action view-->
     <record id="action_sport_player" model="ir.actions.act_window">
         <field name="name">Sport Player</field>
         <field name="res_model">sport.player</field>
@@ -124,7 +138,7 @@
                 Create a new sport player
             </p>
         </field>
-        
+
     </record>
 
 </odoo>
