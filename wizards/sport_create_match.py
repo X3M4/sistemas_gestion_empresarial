@@ -4,6 +4,7 @@ from odoo import models, fields, api
 class SportCreateMatch(models.TransientModel):
     _name = "sport.create.match"
     _description = "Sport Create Match"
+    
 
     sport_id = fields.Many2one(
         string="Sport",
@@ -20,7 +21,10 @@ class SportCreateMatch(models.TransientModel):
         comodel_name="sport.league",
     )
 
-    team_ids = fields.Many2many("sport.team", string="Teams")
+    team_ids = fields.Many2many(
+        "sport.team", 
+        string="Teams",
+    )
 
     def create_match(self):
         # active_id = self.env.context.get('active_id')
@@ -31,7 +35,9 @@ class SportCreateMatch(models.TransientModel):
             "match_line_ids": [(0, 0, {"team_id": team.id}) for team in self.team_ids],
         }
         game = self.env["sport.match"].create(vals)
-
+        game.message_post_with_source('mail.message_origin_link', 
+                                      render_values={'self':game, 'origin':self.league_id},
+                                      subtype_xmlid='mail.mt_note')
         return {
             "name": "Match",
             "view_mode": "form",
